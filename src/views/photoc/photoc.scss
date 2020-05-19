@@ -1,0 +1,44 @@
+.ant-table-title {
+  color: #2C333E;
+  font-size: 20px;
+  height: 60px;
+  line-height: 36px;
+  font-weight: 500;
+  border-left: 5px solid #2069FF!important;
+  background: #fff;
+}
+.ant-table-body th{
+  text-align: center!important;
+}
+.ant-table-tbody td{
+  text-align: center!important;
+}
+.ant-table-row-expand-icon{
+  float: left;
+}
+.ant-table-row-indent{
+     padding-left: 0px!important;
+}
+.ant-table-thead th:nth-child(1) .ant-table-header-column{
+
+  margin-left: 16px;
+}
+.ant-table-thead{
+  background: #f0f0f0!important;
+}
+.ant-table-row-level-0{
+  background: #f0f0f0!important;
+  color: #2069FF
+}
+.ant-table-row-level-1{
+  background: #f3f5fa!important;
+
+}
+.ant-table-footers{
+  background: #2069FF!important;
+  color: #fff;
+  height: 60px;
+  font-size: 17px;
+  line-height: 60px;
+
+}
