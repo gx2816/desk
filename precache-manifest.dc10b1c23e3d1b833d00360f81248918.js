@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "20cb9f2a5c6517b75eb4eea15001f258",
+    "revision": "dfbaa03a564ada3445e442fbd956dadd",
     "url": "/fornt-desk/index.html"
   },
   {
