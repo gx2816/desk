@@ -7,14 +7,14 @@ import { delCookie, delSessionStorage } from "./cookie";
 import { message } from "antd";
 import React from "react";
 let baseUrl = "";
-
+let baseTest = "";
 // if (process.env.NODE_ENV === 'development') {
 //   baseUrl = base.dev
 // } else{
 //   baseUrl = base.pd
 // }
 baseUrl = base.dev;
-
+baseTest = base.test;
 var instance = axios.create({ timeout: 1000 * 30 });
 instance.interceptors.request.use(
   config => {
@@ -54,20 +54,21 @@ interface IcustomOptions {
 }
 var ajaxSources = 0;
 
-export default function c2s(ajaxOptions: any, customOptions: any = {}) {
+export default function c2s1(ajaxOptions: any, customOptions: any = {}) {
   let onSuccess = ajaxOptions.onSuccess || (() => {});
   let onError = ajaxOptions.onError || (() => {});
   customOptions = convertCustom(customOptions);
   customOptions.autoApplyUrlPrefix &&
-    (ajaxOptions.url = baseUrl + ajaxOptions.url);
+    (ajaxOptions.url ='http://101.132.238.119:8978'+ ajaxOptions.url);
   ajaxOptions.headers = ajaxOptions.headers || {};
+  console.log(ajaxOptions.url)
   if (
     ajaxOptions.method === "post" ||
     ajaxOptions.method === "POST" ||
     ajaxOptions.method === "patch" ||
     ajaxOptions.method === "PATCH"
   ) {
-/*     {if (!(ajaxOptions.body instanceof FormData)) {
+   /*  {if (!(ajaxOptions.body instanceof FormData)) {
       ajaxOptions.headers = {
         Accept: "application/json",
         'Content-Type':'application/json;charset=utf-8',

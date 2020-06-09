@@ -48,3 +48,13 @@
 #showFooter{
   display:block
 }
+.ant-table-row-level-0:last-child{
+  background: #2069FF!important;
+  color: #fff;
+  font-size: 20px;
+}
+.ant-table-row-level-0:last-child td{
+  background: #2069FF!important;
+  color: #fff;
+  font-size: 20px;
+}

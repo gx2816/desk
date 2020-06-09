@@ -98,7 +98,7 @@ class SiderDemo extends React.Component<IProps, {}> {
     localStorage.removeItem("userName")
     this.props.history.push("/");
   
-    console.log(this.props)
+    console.log("tuichudenglu",this.props)
   };
   public onMenuItem = (item: IMenuItem) => {
     this.handleTag(item);
@@ -153,11 +153,9 @@ class SiderDemo extends React.Component<IProps, {}> {
         >
           <div className="logo ant-pro-sider-menu-logo">
             <img style={{ transform:'scale(.5)'}} src={require("../../assets/icon_date.png")} alt="img" />
-            {/* <h1>乐骐数据中心</h1> */}
             <Texty className="mainText" type={"bounce"} mode={"random"}>
               乐骐数据概要总台
             </Texty>
-            {/* {!this.state.collapsed ? <h1>乐骐数据中心</h1>:<h1></h1>} */}
           </div>
           <Menu
             theme="dark"
@@ -186,7 +184,6 @@ class SiderDemo extends React.Component<IProps, {}> {
             style={{
               margin: "24px 16px",
               padding: 24,
-              // background: '#fff',
               minHeight: 280,
               minWidth: 1000
             }}

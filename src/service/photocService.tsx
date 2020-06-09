@@ -1,9 +1,15 @@
 import c2s from '../utils/http';
 
 const photocService = {    
-  orderStats (option:any) {        
+  incomeData (option:any) {        
       return c2s({
-        url:'/order-stats',
+        url:'/barracks/platform',
+        ...option,
+      });    
+  },
+  incomeYear (option:any) {        
+      return c2s({
+        url:'/barracks/platform/year',
         ...option,
       });    
   },

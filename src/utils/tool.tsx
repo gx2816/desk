@@ -50,6 +50,14 @@ export const dateDay = (date: Date) => {
   let formatDate = `${oYear}-${oMoth}-${oDay}`
   return formatDate
 }
+export const dateYear = (date: Date) => {
+  var firstDay = new Date(date);
+  let oYear = firstDay.getFullYear();
+
+ 
+  let formatDate = `${oYear}`
+  return formatDate
+}
 
 export const getCurrentMonth = () => {
   var date = new Date();

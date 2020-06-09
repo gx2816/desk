@@ -78,12 +78,11 @@ class login extends React.PureComponent<UserFormProps, {}>{
   }
   goLogin(token: string) {
     sessionStorage('lq-data-token', token)
-    console.log(" this.state.keys", this.state.keys)
     if (!localStorage.getItem('userName')) {
       localStorage.setItem('userName', this.state.keys)
     }
     this.props.history.push('/main')
-    delCookie("lq-data-token");
+   
   }
   handleSubmit = (e: any) => {
     e.preventDefault();
@@ -95,18 +94,17 @@ class login extends React.PureComponent<UserFormProps, {}>{
           setErr('请拖动滑块解锁')
           return
         }
-       // let remember = values.remember  //是否自动登陆
+       let remember = values.remember  //是否自动登陆
         loginService.login({
           params: {
             email: values.username,
             password: values.password
           },
           onSuccess: ({ data }: any) => {
-            /*if (remember) {
+            if (remember) {
               //自动登陆
-            } */
-            console.log("自动登陆")
-            setCookie('lq-data-token', data.access_token, 3650)
+              setCookie('lq-data-token', data.access_token, 7)
+            }
             resetSuccess()
             this.setState({
               keys:values.username
@@ -141,7 +139,6 @@ class login extends React.PureComponent<UserFormProps, {}>{
         <div className="box">
           <Form onSubmit={this.handleSubmit} className="login-form">
             <div className="title">
-              {/* <h1>乐骐数据中心</h1> */}
               <Texty className="loginText">乐骐数据概要总台</Texty>
             </div>
             <Form.Item>
@@ -166,7 +163,10 @@ class login extends React.PureComponent<UserFormProps, {}>{
               )}
             </Form.Item>
             <Form.Item style={{ marginBottom: '6px', marginTop: '-10px' }}>
-         
+              {getFieldDecorator('remember', {
+                valuePropName: 'checked',
+                initialValue: true,
+              })(<Checkbox>一周内自动登录</Checkbox>)}
               {this.state.isPC &&
                 <div className="drag">
                   <div className="bg"></div>
