@@ -18,7 +18,7 @@ export const getCookie = (name:string) => {
 export const delCookie = (name:string) => {
   var date = new Date()
   date.setTime(date.getTime() - 10000)
-  document.cookie = name + "= '';expires=" + date.toUTCString() + ";path=/"
+  document.cookie = name + "= '';expires=" + date.toUTCString() + ";path=/desk"
   console.log( document.cookie)
   console.log(  date.setTime(date.getTime() - 10000))
 }

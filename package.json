@@ -1,7 +1,7 @@
 {
   "name": "lq-data-front",
   "version": "0.1.0",
-  "homepage": "https://gx2816.github.io/fornt-desk/",
+  "homepage": "https://gx2816.github.io/desk/",
   "private": true,
   "dependencies": {
     "@antv/data-set": "^0.10.2",
