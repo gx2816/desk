@@ -7,25 +7,25 @@ import { dateYear } from "../../utils/tool"
 import {incomeColumns} from "../../utils/tableList"
 import { async } from 'q';
 import { AnyAaaaRecord } from 'dns';
-import TimerYear from "../../components/timerYear";
+import Timeryear from "../../components/timerYear";
 require('./photob.scss')
 export default () => {
   
   const data:any= [];
   let [tabledata, setTabledata] = useState(data);
   let [getyears, setGetyears] = useState([]);
-  let [selectYear, setselectYear] = useState("2030");
+  let [year, setyear] = useState(2020);
   let [loading, setLoading] = useState(true);
 
 
 
   
   useEffect(() => {
-    getYear()
+   /*  getYear() */
     getTable()
   }, [])
 
-  const getYear = () => {
+/*   const getYear = () => {
     let time = new Date()
     let year = +dateYear(time)
     let count = year - 2019
@@ -39,29 +39,34 @@ export default () => {
     }
     setGetyears(arr)
     console.log("getYear",getyears)
-  }
+  } */
   const getTable = async () => {
  
-  let arr:any=[]
+    let arr: any = []
+    let paramsB= {
+      start_date:year+"-01-01",
+      end_date: year+1+"-01-01",
+      category:"b"
+    }
   await photocService.incomeData({
-      params: {
-        start_date:"2020-01-01",
-        end_date: "2021-01-01",
-        category:"b"
-      },
+    params:paramsB,
       onSuccess: ({ data }: any) => {
        arr=data
       }
     })
     photocService.incomeYear({
-      params: {
-        start_date:"2020-01-01",
-        end_date: "2021-01-01",
-        category:"b"
-      },
+      params:paramsB,
       onSuccess: ({ data }: any) => {
         data[0].datetime="截止当前日"+data[0].datetime+"年合计"
         arr.push(data[0])
+        arr.map((val: any,idx:number) => {
+          val["key"] = val["datetime"]
+          if (idx < arr.length - 1) {
+            val["children"].map((v: any) => {
+              v["key"] = v["datetime"]
+            })
+          }
+        })
         setTabledata(arr)
         setLoading(false)
       }
@@ -71,7 +76,7 @@ export default () => {
 
   return (
     <div>
-     <TimerYear selectYear={getTable}/>
+     {/* <Timeryear selectYear={getTable}/> */}
      <Spin spinning={loading} tip="加载中">
         <Table
           style={{ marginTop: "20px" }}

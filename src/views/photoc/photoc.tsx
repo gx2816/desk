@@ -10,33 +10,37 @@ export default () => {
   const data:any= [];
   let [tabledata, setTabledata] = useState(data);
   let [loading, setLoading] = useState(true);
+  let [year, setyear] = useState(2020);
   useEffect(() => {
     getTable()
   }, [])
 
   const getTable = async () => {
     let arr:any=[]
+    let paramsB= {
+      start_date:year+"-01-01",
+      end_date: year+1+"-01-01",
+      category:"c"
+    }
     await photocService.incomeData({
-        params: {
-          start_date:"2020-01-01",
-          end_date: "2021-01-01",
-          category:"c"
-        },
+      params:paramsB,
         onSuccess: ({ data }: any) => {
         arr=data
-        
-    
         }
       })
       photocService.incomeYear({
-        params: {
-          start_date:"2020-01-01",
-          end_date: "2021-01-01",
-          category:"c"
-        },
+        params:paramsB,
         onSuccess: ({ data }: any) => {
           data[0].datetime="截止当前日"+data[0].datetime+"年合计"
           arr.push(data[0])
+          arr.map((val: any,idx:number) => {
+            val["key"] = val["datetime"]
+            if (idx < arr.length - 1) {
+              val["children"].map((v: any) => {
+                v["key"] = v["datetime"]
+              })
+            }
+          })
           setTabledata(arr)
           setLoading(false)
         }
