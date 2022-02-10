@@ -20,7 +20,7 @@
     "braft-editor": "^2.3.9",
     "customize-cra": "^0.2.14",
     "file-saver": "^2.0.2",
-    "node-sass": "^4.12.0",
+    "node-sass": "^7.0.0",
     "rc-queue-anim": "^1.6.12",
     "rc-texty": "^0.2.0",
     "rc-tween-one": "^2.4.1",
